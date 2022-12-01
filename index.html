@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+        <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    </head>
+  <body>
+    <py-script> 
+      import numpy as np
+import pandas as pd
+import re
+from nltk.corpus import stopwords
+from nltk.stem.porter import PorterStemmer
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
+news_dataset = pd.read_csv("train.csv")
+news_dataset = news_dataset[(news_dataset.label == 1) | (news_dataset.label == 0)]
+news_dataset = news_dataset.fillna('')
+news_dataset['content'] = news_dataset['author'] + ' ' + news_dataset['title']
+X = news_dataset['content']
+Y = news_dataset['label']
+def stemming(content):
+    stemmed_content = re.sub('[^a-zA-Z]',' ',str(content))
+    stemmed_content = stemmed_content.lower()
+    stemmed_content = stemmed_content.split()
+    port_stem = PorterStemmer()
+    stemmed_content = [port_stem.stem(word) for word in stemmed_content if not word in stopwords.words('english')]
+    stemmed_content = ' '.join(stemmed_content)
+    return stemmed_content
+print(X)
+X = X.apply(stemming)
+print(X)
+print(0)
+vectorizer = TfidfVectorizer()
+vectorizer.fit(X)
+X = vectorizer.transform(X)
+model = LogisticRegression()
+model.fit(X, Y)
+X_train_prediction = model.predict(X)
+training_data_accuracy = accuracy_score(X_train_prediction, Y)
+print('Accuracy score of the training data : ', training_data_accuracy)
+X_new = pd.read_csv("test.csv")
+X_new = X_new['title'] + X_new['author']
+
+prediction = model.predict(X_new)
+print(prediction)
+
+if (prediction[0]==0):
+  print('The news is Real')
+else:
+  print('The news is Fake')
+    </py-script>
+ 
+  </body>
+</html>
