@@ -48,13 +48,14 @@ def main():
         pickle.dump(model, f4)
     X_train_prediction = model.predict(X_train)
     training_data_accuracy = accuracy_score(X_train_prediction, Y)
-    print('Accuracy score of the training data : ', training_data_accuracy)
+    # print('Accuracy score of the training data : ', training_data_accuracy)
     X_new = X_test[3]
     prediction = model.predict(X_new)
-    print(prediction)
+    # print(prediction)
     
     if (prediction[0]==0):
       print('The news is Fake')
     else:
       print('The news is Real')
+
     

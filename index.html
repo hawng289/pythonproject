@@ -47,13 +47,20 @@
 </body>
 <py-env>
         - nltk
+        - pandas
         - scikit-learn
         - beautifulsoup4
         - requests
-        - re
         - paths:
             - /test.py
             - /index.py
+            - /X
+            - /Y
+            - /model
+            - /vectorizer
+            - /stopword
+        
+        
 </py-env>
 <py-script>
 from test import main
@@ -63,5 +70,6 @@ def sub(*args, **kwargs):
     op.write(main(content))
     
 </py-script>
+
 
 </html>
