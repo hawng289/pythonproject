@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>
+
+        Fake news   
+    
+    </title>
+
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <link rel="stylesheet" href="des.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+
+<body>
+
+    <form onsubmit="return false">
+      <label for="path">URL path</label><br>
+      <input id="path" type="url" placeholder="URL path..."><br>
+
+      <label for="upload"></label>
+      <input id="upload" type="file" name="upload"><br>
+
+      <label for="title">Title</label><br>
+      <input id="title" type="text" placeholder="Title of the news"><br>
+
+      <label for="author">Author</label><br>
+      <input id="author" type="text" placeholder="Author of the news"><br>
+      
+      <label for="content">Content</label><br>
+      <input id="content" type="text" placeholder="Content of the news"><br>
+      
+      <button pys-onClick="sub" type="submit" id="btn-form" value="submit">Submit</button>
+
+
+    </form> 
+
+</body>
+<py-script>
+    from pyodide import create_proxy
+        content = document.getElementById("content");
+    content.innerText = event.target.result
+
+   
+  async def process_file(x):
+    fileList = document.getElementById('upload').files
+   
+    for f in fileList:
+      # reader is a pyodide.JsProxy
+      reader = FileReader.new()
+   
+      # Create a Python proxy for the callback function
+      onload_event = create_proxy(read_complete)
+
+      #console.log("done")
+   
+      reader.onload = onload_event
+   
+      reader.readAsText(f)
+   
+    return
+   
+  def main():
+    # Create a Python proxy for the callback function
+    file_event = create_proxy(process_file)
+   
+    # Set the listener to the callback
+    e = document.getElementById("upload")
+    e.addEventListener("change", file_event, False)
+   
+  
+   
+
+</py-script>
+</html>
