@@ -1,37 +1,23 @@
 import requests
-from requests.exceptions import HTTPError
 from bs4 import BeautifulSoup
-import re
-import pickle
-from nltk.stem.porter import PorterStemmer
 
-
-def stemming(content):  
-    stemmed_content = re.sub('[^a-zA-Z]',' ', str(content))
-    stemmed_content = stemmed_content.lower()
-    stemmed_content = stemmed_content.split()
-    with open('stopword', 'wb') as f2:
-        stopwords = pickle.load(f2)
-    port_stem = PorterStemmer()
-    stemmed_content = [port_stem.stem(word) for word in stemmed_content if not word in stopwords]
-    stemmed_content = ' '.join(stemmed_content)
-    return stemmed_content
 def get_testdata(path) :
     try:
         res = requests.get(path)
         res.raise_for_status()
-    except requests.exceptions.HTTPError as errh:
-        print (errh)
-    except requests.exceptions.ConnectionError as errc:
-        print (errc)
-    except requests.exceptions.Timeout as errt:
-        print (errt)
-    except requests.exceptions.RequestException as err:
-        print (err)
     except requests.exceptions.URLRequired as erru:
-        print(erru)
+        return erru
     except requests.exceptions.TooManyRedirects as e:
-        print(e)
+        return e
+    except requests.exceptions.HTTPError as errh:
+        return errh
+    except requests.exceptions.ConnectionError as errc:
+        return errc
+    except requests.exceptions.Timeout as errt:
+        return errt
+    except requests.exceptions.RequestException as err:
+        return err
+   
     else:
         obj = BeautifulSoup(res.text, 'html.parser')
         list_title = []
@@ -51,6 +37,8 @@ def get_testdata(path) :
             if (len(text) > 50):
                 content += text
         return content
+print(get_testdata("https://www.andreasjakl.com/raycast-anchor-placing-ar-foundation-holograms-part-3/"))
+
 
 
 
