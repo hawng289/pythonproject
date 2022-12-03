@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *{
     margin: 0;
     padding: 0;
@@ -86,3 +87,93 @@ button {
     margin-top: 10px;
     padding-left: 20px;
 }
+=======
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.main{
+    width: 100%;
+    background: linear-gradient(to top,#dee2f5, #99bce7);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+
+.navbar{
+    width: 1300px;
+    height: 75px;
+    margin: auto;
+}
+
+.logo{
+    color: #66fcf1;
+    font-size: 35px;
+    font-family: Arial;
+    padding-left: 20px;
+    float: left;
+    padding-top: 10px;
+    margin-top: 5px
+}
+
+.content h1{
+    margin-top: 50px;
+    margin-left: 35%;
+    color: rgb(44, 2, 2);
+    position: relative;
+    font-size: 50px;
+}
+
+.enterURL {
+    margin-top: 40px;
+    margin-left: 33%;
+    width: 600px;
+    height: 200px;
+    border: px solid rgb(41, 40, 40);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.enterURL input {
+    width: 500px;
+    height: 40px;
+    margin-top: 20px;
+    padding-left: 20px;
+}
+
+label{
+    font-size: 25px;
+    font-style: italic;
+}
+
+button[type=submit]:hover {
+    background-color: #45a049;
+}
+button {
+    background-color: rgb(80, 124, 211);
+    color: aliceblue;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 520px;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+.enterInfor{
+    margin-top: 20px;
+    margin-left: 33%;
+    width: 600px;
+    height: 200px;
+    border-radius: 10px;
+    text-align: center;
+}
+.enterInfor input {
+    width: 500px;
+    height: 40px;
+    margin-top: 10px;
+    padding-left: 20px;
+}
+>>>>>>> cf1b9e6a5e0f69d8a3c8c46b313a163155f62efc

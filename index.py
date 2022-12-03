@@ -1,4 +1,5 @@
 import requests
+from requests.exceptions import HTTPError
 from bs4 import BeautifulSoup
 import re
 import pickle
@@ -16,25 +17,40 @@ def stemming(content):
     stemmed_content = ' '.join(stemmed_content)
     return stemmed_content
 def get_testdata(path) :
-    res = requests.get(path)
-    obj = BeautifulSoup(res.text, 'html.parser')
-    list_title = []
-    for i in range(1, 7):
-        h = obj.find_all('h' + str(i))
-        if (h == []):
-            break
-        list_title.append(h) 
-    content = ""
-    for item in list_title:
-        for i in item:
-            title_text = i.get_text()
-            content += title_text
-    list_text = obj.find_all('p')
-    for item in list_text:
-        text = item.get_text()
-        if (len(text) > 50):
-            content += text
-    return content
+    try:
+        res = requests.get(path)
+        res.raise_for_status()
+    except requests.exceptions.HTTPError as errh:
+        print (errh)
+    except requests.exceptions.ConnectionError as errc:
+        print (errc)
+    except requests.exceptions.Timeout as errt:
+        print (errt)
+    except requests.exceptions.RequestException as err:
+        print (err)
+    except requests.exceptions.URLRequired as erru:
+        print(erru)
+    except requests.exceptions.TooManyRedirects as e:
+        print(e)
+    else:
+        obj = BeautifulSoup(res.text, 'html.parser')
+        list_title = []
+        for i in range(1, 7):
+            h = obj.find_all('h' + str(i))
+            if (h == []):
+                break
+            list_title.append(h) 
+        content = ""
+        for item in list_title:
+            for i in item:
+                title_text = i.get_text()
+                content += title_text
+        list_text = obj.find_all('p')
+        for item in list_text:
+            text = item.get_text()
+            if (len(text) > 50):
+                content += text
+        return content
 
 
 
