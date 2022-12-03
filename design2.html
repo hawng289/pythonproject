@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake News Detection</title>
+    <link rel="stylesheet" href="des2.css">
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+            </div>
+        </div> 
+        <div class="content">
+            <h1>FAKE NEWS DETECTION</h1>
+        </div>
+    
+        <div class="enterURL">
+            <form onsubmit="return false">
+                <label id="urlPath" for="path">URL path</label><br>
+                <input id="path" type="url" placeholder="URL path..."><br>
+
+                <button pys-onClick="sub" type="submit" id="btn-form" value="submit">Submit</button>
+                <p id = 'output'></p>
+            </form>
+        </div>
+    </div>
+
+    <py-env>
+        - nltk
+        - pandas
+        - scikit-learn
+        - beautifulsoup4
+        - requests
+        - paths:
+            - test.py
+            - index.py
+            - X
+            - Y
+            - model
+            - vectorizer
+            - stopword
+        
+        
+    </py-env>
+    <py-script>
+        from test import main
+        op = Element("output")
+        def sub(*args, **kwargs):
+            content = Element('path')
+            string = get_testdata(content)
+            op.write(main(string))
+    
+    </py-script>
+</body>
+</html>
