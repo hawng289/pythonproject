@@ -53,8 +53,11 @@
         op = Element("output")
         def sub(*args, **kwargs):
             content = Element('path')
-            string = get_testdata(content)
-            op.write(main(string))
+            string = get_testdata(str(content.value))
+            if (isinstance(string, str)):
+                op.write(string)    
+            else:
+                op.write(string)
     
     </py-script>
 </body>
