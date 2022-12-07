@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 *{
     margin: 0;
     padding: 0;
@@ -6,7 +5,7 @@
 
 .main{
     width: 100%;
-    background: linear-gradient(to top,#dee2f5, #99bce7);
+    background: linear-gradient(to top,#112fc49e, #04234a);
     background-position: center;
     background-size: cover;
     height: 100vh;
@@ -29,16 +28,17 @@
 }
 
 .content h1{
-    margin-top: 50px;
-    margin-left: 35%;
-    color: rgb(44, 2, 2);
+    margin-top: 10px;
+    margin-left: 32%;
+    color: rgb(255, 255, 255);
     position: relative;
     font-size: 50px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .enterURL {
     margin-top: 40px;
-    margin-left: 33%;
+    margin-left: 32%;
     width: 600px;
     height: 200px;
     border: px solid rgb(41, 40, 40);
@@ -56,6 +56,7 @@
 label{
     font-size: 25px;
     font-style: italic;
+    color: rgb(238, 238, 197);
 }
 
 button[type=submit]:hover {
@@ -73,107 +74,65 @@ button {
     text-transform: uppercase;
 }
 
-.enterInfor{
-    margin-top: 20px;
-    margin-left: 33%;
-    width: 600px;
-    height: 200px;
-    border-radius: 10px;
-    text-align: center;
-}
-.enterInfor input {
-    width: 500px;
-    height: 40px;
-    margin-top: 10px;
-    padding-left: 20px;
-}
-=======
-*{
-    margin: 0;
-    padding: 0;
-}
 
-.main{
-    width: 100%;
-    background: linear-gradient(to top,#dee2f5, #99bce7);
+.image{
+    width: 450px;
+    height: 180px;
+    position: absolute;
+    right: 5px;
+    bottom: 5%;
+    transform: translate(0%,0%);
+    border-radius: 10px;
+    padding: 25px;
+    background: url(static/things-item-3.png);
     background-position: center;
     background-size: cover;
-    height: 100vh;
+    min-height: 100px;
 }
 
-.navbar{
-    width: 1300px;
-    height: 75px;
-    margin: auto;
-}
-
-.logo{
-    color: #66fcf1;
-    font-size: 35px;
-    font-family: Arial;
-    padding-left: 20px;
-    float: left;
-    padding-top: 10px;
-    margin-top: 5px
-}
-
-.content h1{
-    margin-top: 50px;
-    margin-left: 35%;
-    color: rgb(44, 2, 2);
-    position: relative;
-    font-size: 50px;
-}
-
-.enterURL {
-    margin-top: 40px;
-    margin-left: 33%;
-    width: 600px;
-    height: 200px;
-    border: px solid rgb(41, 40, 40);
+.image2{
+    width: 450px;
+    height: 180px;
+    position: absolute;
+    left: 5px;
+    top: 5%;
+    transform: translate(0%,0%);
     border-radius: 10px;
-    text-align: center;
+    padding: 25px;
+    background: url(static/things-item-2.png);
+    background-position: center;
+    background-size: cover;
+    min-height: 100px;
 }
 
-.enterURL input {
-    width: 500px;
-    height: 40px;
-    margin-top: 20px;
-    padding-left: 20px;
-}
-
-label{
-    font-size: 25px;
-    font-style: italic;
-}
-
-button[type=submit]:hover {
-    background-color: #45a049;
-}
-button {
-    background-color: rgb(80, 124, 211);
-    color: aliceblue;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 520px;
-    margin-top: 20px;
-    text-transform: uppercase;
-}
-
-.enterInfor{
-    margin-top: 20px;
-    margin-left: 33%;
-    width: 600px;
-    height: 200px;
+.leaf{
+    width: 200px;
+    height:400px;
+    position: absolute;
+    right: 0px;
+    top: 0%;
+    transform: translate(0%,0%);
     border-radius: 10px;
-    text-align: center;
+    padding: 25px;
+    background: url(static/things-dec-r.png);
+    background-position: center;
+    background-size: cover;
+    min-height: 100px;
 }
-.enterInfor input {
-    width: 500px;
-    height: 40px;
-    margin-top: 10px;
-    padding-left: 20px;
+
+
+.leaf2{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    transform: translate(0%,0%);
+    border-radius: 10px;
+    padding: 25px;
+    background: url(static/things-dec-l.png);
+    background-position: center;
+    background-size: cover;
+    min-height: 100px;
 }
->>>>>>> cf1b9e6a5e0f69d8a3c8c46b313a163155f62efc
+
